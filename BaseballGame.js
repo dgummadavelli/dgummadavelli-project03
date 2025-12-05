@@ -1,5 +1,11 @@
 "use strict";
+/*    JavaScript 7th Edition
+      Project 3
+      Author: Dinesh Kumar Gummadavelli
+      Date:   12/05/2025
 
+      Filename: BaseballGame.js
+*/
 // implement the class BaseballGame for game logic
 class BaseballGame {
   constructor() {
@@ -9,9 +15,8 @@ class BaseballGame {
     this.newGame();
   }
 
-  // generate a new secret key and reset state
   newGame() {
-    // Algorithm from your sketch: three different digits 0–9
+
     var n1 = Math.floor(Math.random() * 10);
 
     var n2;
@@ -29,28 +34,24 @@ class BaseballGame {
     this.history = [];
   }
 
-  // return current secret (for display in the page)
+
   getSecret() {
     return this.secret.split('').join(',');
   }
 
-  // return the current (partial) guess string
+
   getCurrentGuess() {
     return this.currentGuess;
   }
 
-  // add a digit to the current guess.
-  // returns:
-  //   null              -> guess not complete yet
-  //   {guess, balls, strikes} -> when 3 digits entered
-  //   false             -> digit ignored (duplicate or too many)
+
   addDigit(digit) {
-    // ignore if we already have 3 digits
+
     if (this.currentGuess.length >= 3) {
       return false;
     }
 
-    // do not allow repeated digits
+
     if (this.currentGuess.indexOf(digit) !== -1) {
       return false;
     }
@@ -60,7 +61,7 @@ class BaseballGame {
     if (this.currentGuess.length === 3) {
       var result = this.checkGuess();
       this.history.push(result);
-      // reset guess for next round
+
       this.currentGuess = "";
       return result;
     }
@@ -68,7 +69,6 @@ class BaseballGame {
     return null;
   }
 
-  // compare currentGuess to secret and return balls/strikes
   checkGuess() {
     var guess = this.currentGuess;
     var balls = 0;

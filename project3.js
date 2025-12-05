@@ -1,6 +1,12 @@
 "use strict";
+/*    JavaScript 7th Edition
+      Project 3
+      Author: Dinesh Kumar Gummadavelli
+      Date:   12/05/2025
 
-// implement behavioral requirements of project3
+      Filename: project3.js
+*/
+
 (function () {
   function trim(str) {
     return String(str || "").replace(/^\s+|\s+$/g, "");
@@ -23,7 +29,7 @@
     var newBtn    = document.getElementById("new");
     var tbodyStat = document.getElementById("tbody-stat");
 
-    // show the secret key (spec says it’s displayed)
+  
     function showKey() {
       keySpan.textContent = game.getSecret();
     }
@@ -33,7 +39,7 @@
     }
 
     function clearTable() {
-      // remove all rows from tbody
+
       while (tbodyStat.firstChild) {
         tbodyStat.removeChild(tbodyStat.firstChild);
       }
@@ -51,7 +57,6 @@
       }
     }
 
-    // handle clicking on a digit button
     function handleDigitClick(evt) {
       var digit = trim(evt.target.textContent);
       if (digit === "") {
@@ -61,7 +66,7 @@
       var result = game.addDigit(digit);
       updateGuessDisplay();
 
-      // if result is an object, a full 3-digit guess was made
+
       if (result && typeof result === "object") {
         var tr = document.createElement("tr");
 
@@ -79,10 +84,10 @@
 
         tbodyStat.appendChild(tr);
 
-        // guess was consumed, so clear display
+
         updateGuessDisplay();
 
-        // 3 strikes = game won
+
         if (result.strikes === 3) {
           alert("Strike out! The Key was " + game.getSecret() + ". Click New to start a new game.");
           setDigitsEnabled(false);
@@ -90,13 +95,13 @@
       }
     }
 
-    // wire up digit buttons
+
     var i;
     for (i = 0; i < digitBtns.length; i++) {
       digitBtns[i].addEventListener("click", handleDigitClick);
     }
 
-    // "New" button: start a new game
+
     newBtn.addEventListener("click", function () {
       game.newGame();
       showKey();
@@ -108,6 +113,6 @@
     // initial state
     setDigitsEnabled(false);
     guessSpan.textContent = "";
-    // Secret text already says "Press NEW" from HTML until New is clicked
+
   });
 })();
