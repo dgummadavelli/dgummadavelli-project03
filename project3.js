@@ -84,7 +84,7 @@
 
         // 3 strikes = game won
         if (result.strikes === 3) {
-          alert("Strike out! Key = " + game.getSecret() + " Click New to start a new game.");
+          alert("Strike out! The Key was " + game.getSecret() + ". Click New to start a new game.");
           setDigitsEnabled(false);
         }
       }
